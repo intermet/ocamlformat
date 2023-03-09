@@ -377,9 +377,13 @@ is nil."
 ;;;###autoload
 (defun ocamlformat-setup-indent ()
   (interactive nil)
-  (when (ocamlformat--enable-indent)
-    (setq-local indent-line-function #'ocamlformat-line)
-    (setq-local indent-region-function #'ocamlformat-region)))
+  (setq-local indent-line-function #'ocamlformat-line)
+  (setq-local indent-region-function #'ocamlformat-region))
+;; (defun ocamlformat-setup-indent ()
+;;   (interactive nil)
+;;   (when (ocamlformat--enable-indent)
+;;     (setq-local indent-line-function #'ocamlformat-line)
+;;     (setq-local indent-region-function #'ocamlformat-region)))
 
 ;;;###autoload
 (defun ocamlformat-caml-mode-setup ()
