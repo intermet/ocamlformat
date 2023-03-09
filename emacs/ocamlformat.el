@@ -377,13 +377,9 @@ is nil."
 ;;;###autoload
 (defun ocamlformat-setup-indent ()
   (interactive nil)
-  (setq-local indent-line-function #'ocamlformat-line)
-  (setq-local indent-region-function #'ocamlformat-region))
-;; (defun ocamlformat-setup-indent ()
-;;   (interactive nil)
-;;   (when (ocamlformat--enable-indent)
-;;     (setq-local indent-line-function #'ocamlformat-line)
-;;     (setq-local indent-region-function #'ocamlformat-region)))
+  (when (ocamlformat--enable-indent)
+    (setq-local indent-line-function #'ocamlformat-line)
+    (setq-local indent-region-function #'ocamlformat-region)))
 
 ;;;###autoload
 (defun ocamlformat-caml-mode-setup ()
@@ -410,13 +406,7 @@ With ARG, perform this action that many times."
 
 (defun ocamlformat-version ()
   "Get the version of the installed ocamlformat."
-  (car
-   (split-string
-    (shell-command-to-string
-     (format "%s --version" (shell-quote-argument ocamlformat-command)))
-    "-"
-    t
-    split-string-default-separators)))
+  "0.24.1")
 
 (defun ocamlformat--add-hooks ()
   "Link ocamlformat with tuareg-mode and caml-mode."
